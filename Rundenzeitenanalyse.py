@@ -269,7 +269,7 @@ with plot_col:
         fig.update_layout(
             xaxis_title="Runde",
             yaxis_title="Rundenzeit",
-            hovermode="x unified",
+            hovermode="closest",
             height=700,
             legend_title_text="Name"
         )
