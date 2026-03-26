@@ -89,6 +89,8 @@ selected_file_path = file_options[selected_file_label]
 
 df = pd.read_excel(selected_file_path)
 
+df["Name_with_pos"] = df["Name"].astype(str) + " (" + df["Pos"].astype(str) + ")"
+
 required_columns = ["Contest", "Name"]
 missing_required_columns = [col for col in required_columns if col not in df.columns]
 
@@ -116,7 +118,7 @@ for col in available_lap_columns:
 
 # 9. Long-Format
 df_long = df.melt(
-    id_vars=["Contest", "Name"],
+    id_vars=["Contest", "Name", "Name_with_pos"],
     value_vars=available_lap_columns,
     var_name="Lap",
     value_name="LapTimeSeconds"
@@ -241,13 +243,14 @@ with plot_col:
             filtered_df,
             x="Lap",
             y="LapTimeSeconds",
-            color="Name",
+            color="Name_with_pos",
             markers=True,
             title=f"{selected_file_label} - {selected_contest}",
             hover_data={
-                "Lap": True,
+                "Lap": False,
                 "LapTimeSeconds": False,
                 "LapTimeLabel": True,
+                "Name_with_pos": False,
                 "Name": True
             }
         )
