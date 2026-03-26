@@ -63,7 +63,7 @@ def build_file_options(excel_files):
 
 
 # 3. Basisordner
-base_path = Path("~/Documents/Positron/Auswertungen_SBC/").expanduser()
+base_path = Path(".")
 excel_files = sorted(list(base_path.glob("*.xlsx")) + list(base_path.glob("*.xls")))
 
 if not excel_files:
