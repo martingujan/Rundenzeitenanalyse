@@ -290,3 +290,5 @@ with plot_col:
         )
 
         st.plotly_chart(fig, use_container_width=True)
+
+        st.caption("Erstellt von Martin Gujan")
