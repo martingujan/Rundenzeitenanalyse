@@ -24,13 +24,13 @@ def parse_lap_time_to_seconds(value):
     try:
         if len(parts) == 2:
             minutes = int(parts[0])
-            seconds = int(parts[1])
+            seconds = float(parts[1].replace(",", "."))
             return minutes * 60 + seconds
 
         if len(parts) == 3:
             hours = int(parts[0])
             minutes = int(parts[1])
-            seconds = int(parts[2])
+            seconds = float(parts[1].replace(",", "."))
             return hours * 3600 + minutes * 60 + seconds
 
         return None
